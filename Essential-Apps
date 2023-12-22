@@ -4,3 +4,4 @@ yum install -y net-tools yum-utils
 yum install -y wget
 yum install -y epel-release
 yum install -y htop
+yum install -y unzip
