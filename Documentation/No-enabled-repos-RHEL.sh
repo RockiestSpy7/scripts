@@ -9,7 +9,7 @@ mount /dev/cdrom /media/rhel-iso/
 # Now when you have your RHEL iso mounted in /media/rhel-iso/, create a new dnf repo file at /etc/yum.repos.d/RHEL_Disc.repo with the following content
 vi /etc/yum.repos.d/RHEL_Disc.repo
 # [RHEL_Disc]
-# name=rhel-8.5-x86_64-dvd
+# name=rhel-9.3-x86_64-dvd
 # baseurl="file:///media/rhel-iso/AppStream/"
 # gpgcheck=0
 
@@ -17,7 +17,7 @@ vi /etc/yum.repos.d/RHEL_Disc.repo
 ex /etc/yum.repos.d/RHEL_Disc.repo <<EOF
 i
 [RHEL_Disc]
-name=rhel-8.5-x86_64-dvd
+name=rhel-9.3-x86_64-dvd
 baseurl="file:///media/rhel-iso/AppStream/"
 gpgcheck=0
 .
