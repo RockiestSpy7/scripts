@@ -1,7 +1,16 @@
-#!/bin/bash
+# Centos 7 Install
+# Text editor
 yum install -y vim
+
+# Networking command line tool
 yum install -y net-tools yum-utils
+
+# Used to download files from the cli
 yum install -y wget
-yum install -y epel-release
+
+# An Improved version of the top command, monitoring tool
+yum install -y epel-release # Install first for it to work
 yum install -y htop
+
+# Used to unzip packages
 yum install -y unzip
