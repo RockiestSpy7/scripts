@@ -1,19 +1,19 @@
 #!/bin/bash
-# Install on RHEL 9
-dnf update -y
-dnf install -y httpd
-systemctl enable httpd
-systemctl start httpd
-firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --reload
-dnf install -y mysql-server mysql
-systemctl enable mysqld
-systemctl start mysqld
+# Installs Appache, MySQL, and Php on RHEL 9
+sudo dnf update -y
+sudo dnf install -y httpd
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --reload
+sudo dnf install -y mysql-server mysql
+sudo systemctl enable mysqld
+sudo systemctl start mysqld
 # Secure the MySQL installation
 # sudo mysql_secure_installation 
-dnf install -y php php-mysqlnd php-cli
-systemctl restart httpd
-ex /var/www/html/test.php <<EOF
+sudo dnf install -y php php-mysqlnd php-cli
+sudo systemctl restart httpd
+sudo ex /var/www/html/test.php <<EOF
 i
 <?php
 phpinfo();
