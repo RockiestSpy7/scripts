@@ -9,4 +9,5 @@ sudo echo "[pvenodes]
 sudo echo "[defaults]
 interpereter_python=auto_silent
 host_key_checking=False" > ansible.cfg
+ansible pvenodes -i inventory -m ping --user=root -k
 
