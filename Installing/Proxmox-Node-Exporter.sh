@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This bash script istalls proxmox node-exporter and then prints out the IP address of the machine
 # Create user
 useradd -m -s /bin/false node_exporter
 

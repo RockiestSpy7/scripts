@@ -1,19 +1,43 @@
 #!/bin/bash
-# Installs Appache, MySQL, and Php on RHEL 9
-sudo dnf update -y
-sudo dnf install -y httpd
-sudo systemctl enable httpd
-sudo systemctl start httpd
-sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
-sudo firewall-cmd --reload
-sudo dnf install -y mysql-server mysql
-sudo systemctl enable mysqld
-sudo systemctl start mysqld
+# Install on CentOS 8
+# Updates software to latest patched version
+dnf update -y
+
+# Installs Apache web service
+dnf install -y httpd
+
+# Enables the service so it starts upon reboot
+systemctl enable httpd
+
+# starts the httpd service to continue with installation/setup
+systemctl start httpd
+
+
+# Allow port 80 through the firewall and reload it
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --reload
+
+# Installs the MySQL server, client, and dependencies
+# Optionally, you can make your MySQL installation more secure by supplying a password for the MySQL root user, removing 
+# anonymous users, preventing the MySQL root user from logging in remotely, and removing the test database. 
+dnf install -y mysql-server mysql
+
+# Enable and start the MySQL server service:
+systemctl enable mysqld
+systemctl start mysqld
+
 # Secure the MySQL installation
-# sudo mysql_secure_installation 
-sudo dnf install -y php php-mysqlnd php-cli
-sudo systemctl restart httpd
-sudo ex /var/www/html/test.php <<EOF
+sudo mysql_secure_installation 
+
+# Installs PHP, the MySQL native driver components for PHP, the PHP CLI package, and dependencies
+# php-cli is a security risk so ensure not to leave your php-cli scripts in either your web-accessible directories or with open permissions where anyone can execute them.
+dnf install -y php php-mysqlnd #php-cli
+
+# Restart Apache after installing php
+systemctl restart httpd
+
+# Create the test.php file to test if php is working
+ex /var/www/html/test.php <<EOF
 i
 <?php
 phpinfo();
