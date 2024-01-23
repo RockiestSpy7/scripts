@@ -3,14 +3,14 @@
 
 # Your new entries to be added (each entry on a new line)
 # Adjust the IP addresses and Hostnames to your needs.
-new_entry="
+hosts="
 192.168.40.10    haproxy-centos8
 192.168.40.11    httpd-node01
 192.168.40.12    httpd-node02
 "
 
 # Append the new entries to the end of the hosts file
-echo "$new_entry" | sudo tee -a /etc/hosts
+echo "$hosts" | sudo tee -a /etc/hosts
 
 sudo dnf update
 
