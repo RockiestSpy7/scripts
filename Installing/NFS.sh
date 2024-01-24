@@ -21,6 +21,9 @@ echo "/$directory_name   $client_ip(rw)" > /etc/exports
 exportfs -a
 # Shows your exported file system
 exportfs
+#
+firewall-cmd --add-service=nfs --permanent
+firewall-cmd --reload
 
 #!/bin/bash
 #============#
@@ -36,6 +39,9 @@ mkdir /${directory_name}
 chmod 777 /${directory_name}
 # Prints this line at the end of the /etc/fstab file
 echo "$server_ip:/$directory_name /$directory_name nfs  rw 0 0" >> /etc/fstab
+#
+firewall-cmd --add-service=nfs --permanent
+firewall-cmd --reload
 # Mounts the files defined in the /etc/fstab file
 mount -a
 # Displays the mounted file systems
