@@ -1,30 +1,40 @@
-# Commands for installing and setting up HaProxy Load Balancer on CentOS
+#---------------------------------------------------------#
+# Install and Configure HaProxy Load Balancer on CentOS 8 #
+#---------------------------------------------------------#
 
+#---------------------------------------------------------#
+# WARNING: Before proceeding, customize this file to     #
+# match your specific environment and requirements.       #
+# Failure to do so may result in misconfiguration or     #
+# unintended consequences.                                #
+#---------------------------------------------------------#
+
+# Edit the hosts file to map IP addresses to hostnames
 vi /etc/hosts
 # Adjust the IP addresses and Hostnames to your needs.
 192.168.40.10    haproxy-centos8
 192.168.40.11    httpd-node01
 192.168.40.12    httpd-node02
 
+# Update system packages
 sudo dnf update
 
-dnf install haproxy
+# Install HaProxy
+dnf install -y haproxy
 
-# Create backup for haproxy.cfg
+# Create a backup of the haproxy configuration file
 cd /etc/haproxy/
 cp haproxy.cfg haproxy.cfg-bk
 
+# Edit the haproxy configuration file
 vi haproxy.cfg
 # Adjust the IP addresses and Hostnames to your needs.
+# Configure frontend and backend settings
 frontend http_balancer
     bind 192.168.40.10:80
     option http-server-close
     option forwardfor
     stats uri /haproxy?stats
-
-#    acl url_static       path_beg       -i /static /images /javascript /stylesheets
-#    acl url_static       path_end       -i .jpg .gif .png .css .js
-#    use_backend static          if url_static
     default_backend     nginx_webservers
 
 backend nginx_webservers
@@ -36,14 +46,13 @@ backend nginx_webservers
 
 # Configure rsyslog for HAProxy logging.
 vi /etc/rsyslog.conf
-# Uncomment these two lines
+# Uncomment these two lines to enable UDP logging
 module(load="imudp")
 input(type="imudp" port="514")
 
 # Create haproxy.conf file for rysyslog
 vi /etc/rsyslog.d/haproxy.conf
-
-# Paste the following content into the haproxy.conf file
+# Specify log file locations for HAProxy
 local2.=info     /var/log/haproxy-access.log
 local2.notice    /var/log/haproxy-info.log
 
@@ -51,13 +60,12 @@ local2.notice    /var/log/haproxy-info.log
 systemctl restart rsyslog
 systemctl enable rsyslog
 
-# Set the following selinux rule
+# Set SELinux rule for HaProxy
 setsebool -P haproxy_connect_any 1
 
-# Start & enable haproxy
-systemctl start haproxy
-systemctl enable haproxy
+# Start Apache and Enable Auto-start
+systemctl enable --now haproxy
 
-# Allow port 80 on the haproxy firewall
+# Allow port 80 on the firewall for HaProxy
 firewall-cmd --add-port=80/tcp --permanent
 firewall-cmd --reload
