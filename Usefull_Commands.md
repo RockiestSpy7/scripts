@@ -177,6 +177,7 @@
 
         $ df -h                                 # Show free and used space on mounted filesystems
         $ df -i                                 # Show free and used inodes on mounted filesystems
+        $ df -hT                                # Includes file system type column
         $ fdisk -l                              # Display disks partitions sizes and types
         $ du -ah                                # Display disk usage for all files and directories in human readable format
         $ du -sh                                # Display total disk usage off the current directory
@@ -218,52 +219,19 @@
 
 
 man
-who
 chvt
-find
 nl
 sort
 wc
-
-# Displays User and Groups the user is apart of
-whoami ; groups
-
-# Displays command history
+groups
 history
-
-# displays the last few lines of a text file
-tail
-tail -f /var/log/syslog
-
-# Used to query DNS servers to obtain domain name or IP address mapping or other DNS information.
 nslookup
-# Uused to perform DNS lookups and display the answers that are returned from the DNS servers
-dig
-
 id
-# stands for "superuser do" and is used to execute commands with elevated privileges.
-sudo
-# Executes as root
-sudo -i
-
-# stands for "switch user" and is used to switch to another user account.
 su
-# Switches to root user
 su -
-
-# displays dynamic real-time information about running processes 
-top
-
-# displays the hostname of the system
-hostname
-
-# stands for "disk free" and is used to display information about the amount of free disk space on filesystems
-df
-# -h outputs human readable format
-# -T adds a column showing the filesystem type
 df -hT
 
-# Executes a command on another machine and prints the output into a file
+
 ssh -t <User>@<ip_address> <command> >> <file_name>.txt
 
 { echo " " ; echo "==== `date` on `hostname` ====" ; df -hT ; }
