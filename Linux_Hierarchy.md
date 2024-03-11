@@ -1,6 +1,8 @@
 ### File Hierarchy Standard (FHS)
 This documentation is just a simple explanation of what each directory is used for. For a more in depth explanation on the FHS please visite this site below.
 
+For even more information you can use man heir or man file-hierarchy
+
 ### Detailed Documentation of the FHS https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
 
     /                           # Root directory, the starting point of the file system hierarchy.
