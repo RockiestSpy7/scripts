@@ -1,3 +1,10 @@
+### IF you need more information on a command or need to look up a certain command use these commands
+
+        $ man                                   # Displays the manual pages for commands on linux
+        $ man -k                                # Searches manual pages containing a certain keyword
+        $ apropos                               # Searches manual pages containing a certain keywordSearch manual pages 
+        $ mandb                                 # Updates the manual page index database
+
 ### 1. SYSTEM INFORMATION
 
         $ uname -a                              # Display Linux system information
