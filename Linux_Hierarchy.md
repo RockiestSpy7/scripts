@@ -14,16 +14,16 @@ For even more information you can use man heir or man file-hierarchy
     /dev                        # Device files representing hardware devices attached to the system.
 
     /etc                        # System configuration files, including system-wide configuration files and startup scripts.
-        /etc/opt                # Configuration files for optional software packages installed in /opt.
-        /etc/X11 (OPTIONAL)     # Configuration files for the X Window System.
-        /etc/sgml (OPTIONAL)    # SGML (Standard Generalized Markup Language) configuration files.
-        /etc/xml (OPTIONAL)     # XML (eXtensible Markup Language) configuration files.
+    /etc/opt                    # Configuration files for optional software packages installed in /opt.
+    /etc/X11 (OPTIONAL)         # Configuration files for the X Window System.
+    /etc/sgml (OPTIONAL)        # SGML (Standard Generalized Markup Language) configuration files.
+    /etc/xml (OPTIONAL)         # XML (eXtensible Markup Language) configuration files.
 
     /home (OPTIONAL)            # Home directories for regular users.
 
     /lib                        # Shared libraries needed by programs in /bin and /sbin.
 
-    /lib<qual> (OPTIONAL)       #
+    /lib<qual> (OPTIONAL)       # There may be one or more variants of the /lib directory on systems which support more than one binary format requiring separate libraries.
 
     /media                      # Mount points for removable media such as USB drives and CDs.
 
