@@ -1,10 +1,6 @@
-<h1> Usefull Commands </h1>
+### System Information
 
-
-
-<h2> System Information </h2>
-
-# Display Linux system information
+#Display Linux system information
 uname -a
 
 # Display kernel release information
