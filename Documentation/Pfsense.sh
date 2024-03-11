@@ -8,3 +8,8 @@
 
 # Virtual machines might have different requirements for installation
 
+
+
+# Setting up DHCP -- https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html
+# Setting up DNS -- https://docs.netgate.com/pfsense/en/latest/services/dns/index.html
+# Setting up NTP -- https://docs.netgate.com/pfsense/en/latest/services/ntpd/index.html

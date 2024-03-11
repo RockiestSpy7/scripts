@@ -7,7 +7,7 @@
 # Not Finished
 
 vi /etc/hosts
-192.168.1.1  freeipa.mydomain.lan
+192.168.1.1  freeipa.local.lan
 
 dnf update -y
 

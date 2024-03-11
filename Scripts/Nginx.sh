@@ -2,9 +2,11 @@
 # Install and Configure Nginx Webserver on CentOS 8 #
 #---------------------------------------------------#
 
-## Bash Script ##
-
 ## Official English Documentation: http://nginx.org/en/docs/ ##
+
+#!/bin/bash
+# OPTIONAL: github_link="github_link"
+local="127.0.0.1:{80,443}" # Tests if nginx is working 
 
 # Update system packages
 dnf update -y
@@ -24,6 +26,7 @@ firewall-cmd --reload
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bk
 
 # put the IP of the Nginx server into a web browser to test if its working correctly
+curl $local
 
-# Change to the Nginx HTML directory and download your website files
-cd /usr/share/nginx/html && wget <insert_github_link>
+# OPTIONAL: Change to the Nginx HTML directory and download your website files
+#cd /usr/share/nginx/html && wget $github_link
