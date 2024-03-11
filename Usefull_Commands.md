@@ -1,6 +1,6 @@
 ### System Information
 
-$uname -a                # Display Linux system information
+$ uname -a                # Display Linux system information
 
 #Display kernel release information
 uname -r
