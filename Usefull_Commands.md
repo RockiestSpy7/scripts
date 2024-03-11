@@ -157,7 +157,6 @@
     
 ### 13. File Transfer
 
-    scp
     $ scp file.txt   server2:/tmp                           # Secure copy file.txt to remote host  /tmp folder
     $ scp nixsavy@server2:/www/*.html   /www/tmp            # Copy *.html files from remote host to current system /www/tmp folder
     $ scp -r nixsavy@server2:/www   /www/tmp                # Copy all files and folders recursively from remote server to the current system /www/tmp folder
