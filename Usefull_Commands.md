@@ -218,30 +218,25 @@
 
 
 
+### Other Commands
+        $ chvt                                  #
+        $ nl                                    #
+        $ sort
+        $ wc                                    #
+        $ groups                                #
+        $ history                               #
+        $ nslookup
+        $ id
+        $ su
 
 
 
+### Example Commands
+        # Executes a command on another computer and outputs it on a file on your computer
+        ssh -t <User>@<ip_address> <command> >> <file_name>.txt
 
+        # Outputs disk space on mounted filesystems in a text file with a custom date and hostname at the top
+        { echo " " ; echo "==== `date` on `hostname` ====" ; df -hT ; } >> `hostname`-health.txt
 
-
-man
-chvt
-nl
-sort
-wc
-groups
-history
-nslookup
-id
-su
-su -
-df -hT
-
-
-ssh -t <User>@<ip_address> <command> >> <file_name>.txt
-
-{ echo " " ; echo "==== `date` on `hostname` ====" ; df -hT ; }
-
-{ echo " " ; echo "==== `date` on `hostname` ====" ; df -hT ; } > `hostname`-health.txt
-
-find /etc -maxdepth 1 -iname "*.*" -exec du -sh {} \; | sort -h
+        # 
+        find /etc -maxdepth 1 -iname "*.*" -exec du -sh {} \; | sort -h
