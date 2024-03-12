@@ -18,4 +18,4 @@
     ^           # Move to the start of the line
     $           # Move to the end of the line
     w           # Move to the next word
-    
+    Shift-zz    # Save and exits the file

@@ -216,6 +216,18 @@
         $ journalctl                            # Display logs stored in the systemd journal.
         $ journalctl -u servicename             # Display logs for a specific unit (service).
 
+### 18. Managing Disk Partitions and Mount Points
+
+        $ lsblk -f                              # Lists block devices (-f shows filesystem related details)
+        $ fdisk                                 # Allows you to manage disk partitions on Linux systems, allowing users to manipulate disk space allocation according to their requirements.
+        $ mkfs                                  # Used for initializing disk partitions or block devices with a filesystem, enabling them to be used for data storage
+        $ parted                                # Used for disk partitioning and partition management
+        $ findmnt                               # Used to display a list of currently mounted filesystems or search for mounted filesystems based on various criteria
+        $ mount                                 # Used to mount filesystems onto a directory in the filesystem hierarchy, making the content of the filesystem accessible to the system and users.
+        $ mount -a                              # Used to mount all filesystems listed in the /etc/fstab file that are not already mounted
+        $ mkswap                                # used to set up a swap area on a device or partition
+        $ swapon -v                             # used to activate swap space on a device or partition (-v verbose mode providing detailed info on swap areas being activated)
+        
 
 
 ### Other Commands
