@@ -228,6 +228,7 @@
         $ nslookup
         $ id
         $ su
+        $ xargs                                 # Takes the output of the previous command and inputs it the end the command specified
 
 
 
@@ -240,3 +241,6 @@
 
         # 
         find /etc -maxdepth 1 -iname "*.*" -exec du -sh {} \; | sort -h
+
+        # Outputs these three names in the passwd, group, and shadow file
+        grep 'steve\|jake\|mike' /etc/{passwd,group,shadow}
