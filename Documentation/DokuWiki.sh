@@ -83,3 +83,7 @@ yum -y install certbot-apache
 # and make sure DNS server is configured with A record
 certbot
 # Check website to ensure its working correctly
+
+# Automatic Certificate Renewal
+crontab -e
+* */12 * * * /usr/bin/certbot renew >/dev/null 2>&1
