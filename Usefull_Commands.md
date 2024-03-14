@@ -225,8 +225,21 @@
         $ findmnt                               # Used to display a list of currently mounted filesystems or search for mounted filesystems based on various criteria
         $ mount                                 # Used to mount filesystems onto a directory in the filesystem hierarchy, making the content of the filesystem accessible to the system and users.
         $ mount -a                              # Used to mount all filesystems listed in the /etc/fstab file that are not already mounted
+        $ showmount                             # 
         $ mkswap                                # used to set up a swap area on a device or partition
         $ swapon -v                             # used to activate swap space on a device or partition (-v verbose mode providing detailed info on swap areas being activated)
+        $ pvcreate                              #
+        $ pvremove                              #
+        $ pvs                                   #
+        $ vgcreate                              #
+        $ vgextend                              #
+        $ vgreduce                              #
+        $ vgs                                   #
+        $ lvcreate                              #
+        $ lvextend                              #
+        $ lvreduce                              #
+        $ lvs                                   #
+        $ rpcinfo                               #
         
 
 
