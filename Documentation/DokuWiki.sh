@@ -20,3 +20,42 @@ sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/dokuwiki/conf
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/dokuwiki/data(/.*)?"
 sudo restorecon -Rv /var/www/html/dokuwiki/conf
 sudo restorecon -Rv /var/www/html/dokuwiki/data
+sudo systemctl enable --now httpd
+# Change AllowOverride None to AllowOveride All
+# under <Directory "/var/www/html">
+# Test if it worked by puting this in the web browser
+# http://yourserver.com/data/pages/wiki/dokuwiki.txt
+# If it denys you access then you have secured DokuWiki
+
+
+# How to install it on Amazon Linux 2
+sudo yum -y update
+sudo yum -y install httpd
+sudo amazon-linux-extras enable php8.0
+sudo yum clean metadata
+sudo yum -y install php php-{cli,common,gd,mbstring,mysqlnd,xml}
+wget https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz
+sudo tar zxvf dokuwiki-stable.tgz -C /var/www/html/ --strip-components=1
+cd /var/www/html
+sudo cp .htaccess.dist .htaccess
+sudo chown -R apache:apache /var/www/html
+sudo systemctl enable --now httpd
+# Check your .htaccess file and ensure it has this in it
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+</IfModule>
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+sudo vim /etc/httpd/conf/httpd.conf
+# Change AllowOverride None to AllowOveride All
+# under <Directory "/var/www/html">
+# Test if it worked by puting this in the web browser
+# http://yourserver.com/data/pages/wiki/dokuwiki.txt
+# If it denys you access then you have secured DokuWiki
+
+
+# Add A record in DNS server and name it wiki.
+# point it towards the IP of the dokuwiki server
