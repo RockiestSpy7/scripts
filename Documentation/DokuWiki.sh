@@ -59,3 +59,27 @@ sudo vim /etc/httpd/conf/httpd.conf
 
 # Add A record in DNS server and name it wiki.
 # point it towards the IP of the dokuwiki server
+
+# Add SSL Certificate to Doku Wiki
+yum -y update
+yum -y install mod_ssl
+# Make a new directory or use /var/www/html
+sudo vi /etc/httpd/conf.d/domain-name.conf
+# Enter this
+<VirtualHost *:80>
+ServerAdmin admin@test.com
+DocumentRoot "/var/www/html"
+ServerName domain-name.com
+ServerAlias www.domain-name.com
+ErrorLog "/var/log/httpd/test.error_log"
+CustomLog "/var/log/httpd/test.access_log" common
+</VirtualHost>
+
+chown -R apache:apache /var/www/html
+yum -y install epel-release # For Amazon Linux 2 use "sudo amazon-linux-extras install epel"
+yum -y install yum-utils
+yum -y install certbot-apache
+# Before running certbot, ensure that port 80 is open
+# and make sure DNS server is configured with A record
+certbot
+# Check website to ensure its working correctly
