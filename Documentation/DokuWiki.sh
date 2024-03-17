@@ -29,8 +29,8 @@ sudo systemctl enable --now httpd
 
 
 # How to install it on Amazon Linux 2
-sudo yum -y update
-sudo yum -y install httpd
+sudo yum update -y
+sudo yum install -y httpd
 sudo amazon-linux-extras enable php8.0
 sudo yum clean metadata
 sudo yum -y install php php-{cli,common,gd,mbstring,mysqlnd,xml}

@@ -5,7 +5,7 @@
 # Below are the tools I used along with what they are being used for #
 # Pfsense -- Router,Firewall,DHCP,DNS
 # Appach -- Web Server
-# Reverse Nginx -- Proxy for Appache Webserver
+# Reverse Nginx -- Reverse Proxy for Appache Webserver
 
 
 
@@ -132,10 +132,22 @@ firewall-cmd --zone=public --add-service={http,https} --permanent
 firewall-cmd --reload
 
 [ Setup Reverse Nginx Proxy Server ]
-# Use this script to configure the Reverse Nginx Proxy server
 yum update -y
-yum install -y nginx
-mkdir /etc/nginx/sites-{available,enabled}
-vi /etc/nginx/nginx.conf
-# include     /etc/nginx/sites-enabled/*;
-touch /etc/nginx/sites-available/default.conf
+yum install -y nginx 
+vi /etc/nginx/conf.d/default.conf
+# Put this in the default.conf file
+upstream backend {
+    server web1.local.lan;
+    server web2.local.lan;
+}
+
+server {
+    listen 80;
+    server_name proxy1.local.lan;
+
+    location / {
+        proxy_pass http://backend;
+    }
+}
+
+setsebool -P httpd_can_network_relay 1
